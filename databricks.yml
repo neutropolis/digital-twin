@@ -40,10 +40,16 @@ resources:
             - task_key: sync_to_lakebase
           notebook_task:
             notebook_path: ./5-Create-App.ipynb
+        
+        - task_key: create_genie
+          depends_on:
+            - task_key: sync_to_lakebase
+          notebook_task:
+            notebook_path: ./6-Create-Genie.ipynb
 
     teardown_solution_accelerator:
       name: "Remove all resources created for the solution accelerator"
       tasks:
         - task_key: cleanup
           notebook_task:
-            notebook_path: ./6-Cleanup.ipynb
+            notebook_path: ./7-Cleanup.ipynb
